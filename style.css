@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.logo {
+  width: 160px;
+}
+
+.logo img {
+  width: 140px;
+  height: auto;
+}
+
+/* Menu */
+.menu-desktop {
+  display: flex;
+  gap: 25px;
+}
+
+.menu-desktop a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  padding: 5px 8px;
+  transition: 0.3s ease;
+}
+
+.menu-desktop a:hover {
+  background-color: #fff;
+  color: #111;
+  border-radius: 5px;
+}
+
+.menu-desktop a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
+
+.menu-desktop a:hover::after,
+.menu-desktop a.active::after {
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Carrinho */
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-left: 15px;
+  background-color: #fff;
+  color: #111;
+  font-size: 22px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.cart:hover {
+  transform: scale(1.1);
+  background-color: #e0e0e0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cart.clicked {
+  animation: flash 0.3s;
+}
+
+@keyframes flash {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(3); }
+  100% { filter: brightness(1); }
+}
+
+/* Banner */
+.banner {
+  margin-top: 60px;
+  width: 100%;
+  height: 600px;
+  background-image: url('img/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.banner-texto {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  z-index: 1;
+  text-align: center;
+  max-width: 80%;
+}
+
+/* Coleção em destaque */
+.colecao {
+  padding: 80px 20px 60px;
+  text-align: center;
+  background: #fff;
+}
+
+.colecao h2 {
+  margin-bottom: 30px;
+}
+
+.produtos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.produto {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.produto:hover img {
+  transform: scale(1.1);
+}
+
+/* Novidades */
+.novidades {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.novidades button {
+  padding: 10px 20px;
+  background: #fff;
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Rodapé */
+footer {
+  background: #222;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+footer .redes {
+  margin-bottom: 15px;
+}
+
+footer .redes a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* Menu Mobile */
+.hamburger {
+  display: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-mobile {
+  display: none;
+  flex-direction: column;
+  background-color: #111;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  padding: 10px;
+}
+
+.menu-mobile a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .menu-mobile.show {
+    display: flex;
+  }
+
+  .banner {
+    height: 300px;
+  }
+
+  .produtos {
+    flex-direction: column;
+    align-items: center;
+  }
+}

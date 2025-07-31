@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OverLuxer</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-    
+    <!-- MENU FIXO -->
+  <header>
+    <div class="logo">
+      <img src="img/vai-que-2.png" alt="Logo da Marca">
+    </div>
+
+    <nav class="menu-desktop">
+      <a href="#" class="active">Início</a>
+      <a href="#">Coleção</a>
+      <a href="#">Novidades</a>
+      <a href="#">Promoção</a>
+      <a href="#">Sobre Nós</a>
+      <a href="#">Contato</a>
+    </nav>
+
+    <div class="cart" onclick="clickEffect(this)">🛒</div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <nav class="menu-mobile" id="mobileMenu">
+    <a href="#">Início</a>
+    <a href="#">Coleção</a>
+    <a href="#">Novidades</a>
+    <a href="#">Promoção</a>
+    <a href="#">Sobre Nós</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="banner-texto"></div>
+    <img src="img/banner.jpg" alt="">
+  </section>
+
+  <!-- COLEÇÃO EM DESTAQUE -->
+  <section class="colecao">
+    <h2>Coleção em Destaque</h2>
+    <div class="produtos">
+      <div class="produto">
+        <img src="img/frente.1png.png" alt="Produto 1">
+        <p>Camisa Streetwear</p>
+      </div>
+      <div class="produto">
+        <img src="img/central.png" alt="Produto 2">
+        <p>Camisa Oversized</p>
+      </div>
+      <div class="produto">
+        <img src="img/frente.1png.png" alt="Produto 3">
+        <p>Camisa Streetwear</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVIDADES E PROMOÇÕES -->
+  <section class="novidades">
+    <h2>Novidades & Promoções</h2>
+    <p>Fique por dentro das últimas peças com até 40% OFF!</p>
+    <button>Ver Ofertas</button>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="redes">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+    </div>
+    <p>&copy; 2025 Sua Marca. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
