@@ -1,14 +1,19 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BODY */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f4f4f4;
+  line-height: 1.5;
+  color: #111;
 }
 
+/* HEADER - MENU FIXO */
 header {
   background-color: #111;
   display: flex;
@@ -20,7 +25,94 @@ header {
   top: 0;
   width: 100%;
   z-index: 999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
+
+/* Estilos gerais do pop-up */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Exibe o pop-up quando a classe "active" é adicionada */
+.popup.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Conteúdo do pop-up */
+.popup-content {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+/* Animação de entrada */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Botão de fechar */
+.popup-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #444;
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.popup-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  background-color: #222;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.popup-content button:hover {
+  background-color: #000;
+}
+
 
 .logo {
   width: 160px;
@@ -31,7 +123,7 @@ header {
   height: auto;
 }
 
-/* Menu */
+/* MENU DESKTOP */
 .menu-desktop {
   display: flex;
   gap: 25px;
@@ -43,13 +135,13 @@ header {
   font-size: 15px;
   position: relative;
   padding: 5px 8px;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
 }
 
 .menu-desktop a:hover {
   background-color: #fff;
   color: #111;
-  border-radius: 5px;
 }
 
 .menu-desktop a::after {
@@ -60,16 +152,15 @@ header {
   width: 0%;
   height: 2px;
   background-color: #fff;
-  transition: 0.3s ease;
+  transition: width 0.3s ease;
 }
 
 .menu-desktop a:hover::after,
 .menu-desktop a.active::after {
   width: 100%;
-  background-color: #fff;
 }
 
-/* Carrinho */
+/* CARRINHO */
 .cart {
   display: flex;
   align-items: center;
@@ -84,6 +175,7 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
+  position: relative; /* para posicionar contador */
 }
 
 .cart:hover {
@@ -102,7 +194,21 @@ header {
   100% { filter: brightness(1); }
 }
 
-/* Banner */
+/* CONTADOR DE ITENS NO CARRINHO */
+.contador {
+  background: #e63946;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  pointer-events: none;
+}
+
+/* BANNER */
 .banner {
   margin-top: 60px;
   width: 100%;
@@ -123,6 +229,7 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 }
 
 .banner-texto {
@@ -134,7 +241,7 @@ header {
   max-width: 80%;
 }
 
-/* Coleção em destaque */
+/* COLEÇÃO EM DESTAQUE */
 .colecao {
   padding: 80px 20px 60px;
   text-align: center;
@@ -145,6 +252,31 @@ header {
   margin-bottom: 30px;
 }
 
+/* FILTROS DO CATÁLOGO */
+.filtros {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.btn-filtro {
+  background: #ccc;
+  border: none;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  color: #111;
+}
+
+.btn-filtro.active,
+.btn-filtro:hover {
+  background: #111;
+  color: white;
+}
+
+/* PRODUTOS */
 .produtos {
   display: flex;
   justify-content: center;
@@ -161,6 +293,9 @@ header {
   transition: transform 0.3s ease;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .produto img {
@@ -173,7 +308,24 @@ header {
   transform: scale(1.1);
 }
 
-/* Novidades */
+/* BOTÃO ADICIONAR AO CARRINHO */
+.produto button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #111;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.produto button:hover {
+  background-color: #333;
+}
+
+/* NOVIDADES */
 .novidades {
   background-color: #111;
   color: white;
@@ -188,9 +340,61 @@ header {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-/* Rodapé */
+/* FORMULÁRIO DE CONTATO */
+.contato {
+  background: white;
+  padding: 60px 20px;
+  max-width: 450px;
+  margin: 0 auto 60px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.contato h2 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.contato input,
+.contato textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.contato button {
+  background: #111;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.contato button:hover {
+  background: #333;
+}
+
+#msgStatus {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+  min-height: 20px;
+}
+
+/* RODAPÉ */
 footer {
   background: #222;
   color: white;
@@ -206,9 +410,14 @@ footer .redes a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
+  font-weight: 600;
 }
 
-/* Menu Mobile */
+footer .redes a:hover {
+  text-decoration: underline;
+}
+
+/* MENU MOBILE */
 .hamburger {
   display: none;
   color: white;
@@ -223,7 +432,8 @@ footer .redes a {
   position: absolute;
   top: 60px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
+  z-index: 9999;
 }
 
 .menu-mobile a {
@@ -233,7 +443,11 @@ footer .redes a {
   border-bottom: 1px solid #333;
 }
 
-/* Responsivo */
+.menu-mobile a:hover {
+  background-color: #222;
+}
+
+/* RESPONSIVO */
 @media (max-width: 768px) {
   .menu-desktop {
     display: none;
